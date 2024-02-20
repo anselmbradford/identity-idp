@@ -44,7 +44,18 @@ RSpec.describe Users::PivCacLoginController do
 
       context 'with a valid token' do
         let(:service_provider) { create(:service_provider) }
-        let(:sp_session) { { ial: 1, issuer: service_provider.issuer } }
+        let(:ial) { Idp::Constants::IAL1 }
+        let(:acr_values) do
+          [Saml::Idp::Constants::IAL1_AUTHN_CONTEXT_CLASSREF,
+           Saml::Idp::Constants::AAL1_AUTHN_CONTEXT_CLASSREF].join(' ')
+        end
+        let(:sp_session) do
+          {
+            ial:,
+            issuer: service_provider.issuer,
+            acr_values:,
+          }
+        end
         let(:nonce) { SecureRandom.base64(20) }
         let(:data) do
           {
@@ -175,7 +186,11 @@ RSpec.describe Users::PivCacLoginController do
               end
 
               context 'ial2 service_level' do
-                let(:sp_session) { { ial: Idp::Constants::IAL2, issuer: service_provider.issuer } }
+                let(:ial) { Idp::Constants::IAL2 }
+                let(:acr_values) do
+                  [Saml::Idp::Constants::IAL2_AUTHN_CONTEXT_CLASSREF,
+                   Saml::Idp::Constants::AAL1_AUTHN_CONTEXT_CLASSREF].join(' ')
+                end
 
                 it 'redirects to account' do
                   expect(response).to redirect_to(account_url)
@@ -183,8 +198,10 @@ RSpec.describe Users::PivCacLoginController do
               end
 
               context 'ial_max service level' do
-                let(:sp_session) do
-                  { ial: Idp::Constants::IAL_MAX, issuer: service_provider.issuer }
+                let(:ial) { Idp::Constants::IAL_MAX }
+                let(:acr_values) do
+                  [Saml::Idp::Constants::IALMAX_AUTHN_CONTEXT_CLASSREF,
+                   Saml::Idp::Constants::AAL1_AUTHN_CONTEXT_CLASSREF].join(' ')
                 end
 
                 it 'redirects to the after_sign_in_path_for' do
