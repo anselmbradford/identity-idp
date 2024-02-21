@@ -12,7 +12,7 @@ RSpec.describe 'accounts/two_factor_authentication/show.html.erb' do
         user: user,
         sp_session_request_url: nil,
         sp_name: nil,
-        locked_for_session: false
+        locked_for_session: false,
       ),
     )
   end
@@ -37,7 +37,7 @@ RSpec.describe 'accounts/two_factor_authentication/show.html.erb' do
           user: user,
           sp_session_request_url: nil,
           sp_name: nil,
-          locked_for_session: false
+          locked_for_session: false,
         ),
       )
     end
