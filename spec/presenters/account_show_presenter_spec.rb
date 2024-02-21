@@ -17,7 +17,7 @@ RSpec.describe AccountShowPresenter do
           user: user,
           sp_session_request_url: nil,
           sp_name: nil,
-          locked_for_session: false
+          locked_for_session: false,
         )
 
         expect(profile_index.header_personalization).to eq first_name
@@ -34,7 +34,7 @@ RSpec.describe AccountShowPresenter do
           user: user,
           sp_session_request_url: nil,
           sp_name: nil,
-          locked_for_session: false
+          locked_for_session: false,
         )
 
         expect(profile_index.header_personalization).to eq email_address.email
@@ -55,7 +55,7 @@ RSpec.describe AccountShowPresenter do
           user: user,
           sp_session_request_url: nil,
           sp_name: nil,
-          locked_for_session: false
+          locked_for_session: false,
         )
 
         expect(profile_index.totp_content).to eq t('account.index.auth_app_enabled')
@@ -73,7 +73,7 @@ RSpec.describe AccountShowPresenter do
           user: user,
           sp_session_request_url: nil,
           sp_name: nil,
-          locked_for_session: false
+          locked_for_session: false,
         )
 
         expect(profile_index.totp_content).to eq t('account.index.auth_app_disabled')

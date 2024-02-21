@@ -12,7 +12,7 @@ RSpec.describe 'accounts/show.html.erb' do
         user: user,
         sp_session_request_url: nil,
         sp_name: nil,
-        locked_for_session: false
+        locked_for_session: false,
       ),
     )
   end
@@ -168,7 +168,7 @@ RSpec.describe 'accounts/show.html.erb' do
           user: user,
           sp_session_request_url: sp.return_to_sp_url,
           sp_name: sp.friendly_name,
-          locked_for_session: false
+          locked_for_session: false,
         ),
       )
     end
