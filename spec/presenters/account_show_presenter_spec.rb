@@ -13,8 +13,10 @@ RSpec.describe AccountShowPresenter do
           dob: birthday
         )
         profile_index = AccountShowPresenter.new(
-          decrypted_pii: decrypted_pii, personal_key: '', user: user,
-          sp_session_request_url: nil, sp_name: nil,
+          decrypted_pii: decrypted_pii,
+          user: user,
+          sp_session_request_url: nil,
+          sp_name: nil,
           locked_for_session: false
         )
 
@@ -28,8 +30,10 @@ RSpec.describe AccountShowPresenter do
         email_address = user.reload.email_addresses.last
         email_address.update!(last_sign_in_at: 1.minute.from_now)
         profile_index = AccountShowPresenter.new(
-          decrypted_pii: {}, personal_key: '', user: user,
-          sp_session_request_url: nil, sp_name: nil,
+          decrypted_pii: {},
+          user: user,
+          sp_session_request_url: nil,
+          sp_name: nil,
           locked_for_session: false
         )
 
@@ -47,8 +51,10 @@ RSpec.describe AccountShowPresenter do
         ).to receive(:enabled?).and_return(true)
 
         profile_index = AccountShowPresenter.new(
-          decrypted_pii: {}, personal_key: '', user: user,
-          sp_session_request_url: nil, sp_name: nil,
+          decrypted_pii: {},
+          user: user,
+          sp_session_request_url: nil,
+          sp_name: nil,
           locked_for_session: false
         )
 
@@ -63,8 +69,10 @@ RSpec.describe AccountShowPresenter do
           TwoFactorAuthentication::AuthAppPolicy,
         ).to receive(:enabled?).and_return(false)
         profile_index = AccountShowPresenter.new(
-          decrypted_pii: {}, personal_key: '', user: user,
-          sp_session_request_url: nil, sp_name: nil,
+          decrypted_pii: {},
+          user: user,
+          sp_session_request_url: nil,
+          sp_name: nil,
           locked_for_session: false
         )
 
@@ -81,7 +89,6 @@ RSpec.describe AccountShowPresenter do
 
       account_show = AccountShowPresenter.new(
         decrypted_pii: {},
-        personal_key: '',
         sp_session_request_url: nil,
         sp_name: nil,
         user: user.reload,
@@ -100,7 +107,6 @@ RSpec.describe AccountShowPresenter do
 
       account_show = AccountShowPresenter.new(
         decrypted_pii: {},
-        personal_key: '',
         sp_session_request_url: nil,
         sp_name: nil,
         user: user.reload,
@@ -120,7 +126,6 @@ RSpec.describe AccountShowPresenter do
     subject(:account_show) do
       AccountShowPresenter.new(
         decrypted_pii: decrypted_pii,
-        personal_key: '',
         sp_session_request_url: nil,
         sp_name: nil,
         user: user,
@@ -158,7 +163,6 @@ RSpec.describe AccountShowPresenter do
         user = profile.user
         profile_index = AccountShowPresenter.new(
           decrypted_pii: {},
-          personal_key: '',
           user: user,
           sp_session_request_url: nil,
           sp_name: nil,
@@ -182,7 +186,6 @@ RSpec.describe AccountShowPresenter do
         user = profile.user
         profile_index = AccountShowPresenter.new(
           decrypted_pii: {},
-          personal_key: '',
           user: user,
           sp_session_request_url: nil,
           sp_name: nil,
@@ -201,7 +204,6 @@ RSpec.describe AccountShowPresenter do
 
         profile_index = AccountShowPresenter.new(
           decrypted_pii: {},
-          personal_key: '',
           user: user,
           sp_session_request_url: nil,
           sp_name: nil,

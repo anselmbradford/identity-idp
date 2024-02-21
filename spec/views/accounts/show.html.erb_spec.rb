@@ -8,8 +8,10 @@ RSpec.describe 'accounts/show.html.erb' do
     assign(
       :presenter,
       AccountShowPresenter.new(
-        decrypted_pii: nil, personal_key: nil, user: user,
-        sp_session_request_url: nil, sp_name: nil,
+        decrypted_pii: nil,
+        user: user,
+        sp_session_request_url: nil,
+        sp_name: nil,
         locked_for_session: false
       ),
     )
@@ -162,8 +164,10 @@ RSpec.describe 'accounts/show.html.erb' do
       assign(
         :presenter,
         AccountShowPresenter.new(
-          decrypted_pii: nil, personal_key: 'abc123', user: user,
-          sp_session_request_url: sp.return_to_sp_url, sp_name: sp.friendly_name,
+          decrypted_pii: nil,
+          user: user,
+          sp_session_request_url: sp.return_to_sp_url,
+          sp_name: sp.friendly_name,
           locked_for_session: false
         ),
       )
